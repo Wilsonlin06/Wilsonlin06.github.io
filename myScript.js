@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
+<!--     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
@@ -16,10 +16,10 @@
         margin: 0;
         padding: 0;
       }
-    </style>
+    </style> -->
   </head>
   <body>
-    <div id="map"></div>
+<!--     <div id="map"></div>
     <script>
       var map;
       function initMap() {
@@ -30,7 +30,10 @@
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEwTHbtuO_TmNdoxPvyyrNCMkzDzeBfp0&callback=initMap"
-    async defer></script>
+    async defer></script> -->
+    function myFunction() {
+  document.getElementById("demo").innerHTML = "Let's do it!";
+}
   </body>
 </html>
 
