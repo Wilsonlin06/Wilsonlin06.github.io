@@ -31,9 +31,9 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEwTHbtuO_TmNdoxPvyyrNCMkzDzeBfp0&callback=initMap"
     async defer></script>
-      function myFunction() {
-        document.getElementById("demo").innerHTML = "Let's do it!";
-      }
+//       function myFunction() {
+//         document.getElementById("demo").innerHTML = "Let's do it!";
+//       }
   </body>
 </html>
 
