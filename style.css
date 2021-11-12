@@ -1,0 +1,83 @@
+h1{
+    position: relative;
+    text-align: center;
+}
+.wrapper {
+    position:relative;
+    }
+.wrapper > canvas,
+.wrapper > input {      /* inputs */
+    position:absolute;
+    left:0;
+    top:0;
+    z-index: 9;
+    }
+.wrapper > .m-value {   /* m-slider */
+    left:100px;    
+    top:580px;
+    }
+.wrapper > .b-value {   /* b-slider */
+    left: 350px;
+    top: 580px;
+}
+.wrapper > .m-txt {     /* m-textbox */
+    position: absolute;
+    left: 190px;
+    top: 555px;
+    width: 15px;
+}
+.wrapper > .b-txt {     /* b-textbox */
+    position: absolute;
+    left: 435px;
+    top: 555px;
+    width: 15px;
+}
+.wrapper > .animate {   /* animateImage */
+    position: absolute;
+    left: 150px;
+    top: 150px;
+    width: 100px;
+    border-radius: 16px;
+}
+.wrapper > button {     /* buttons */
+    position: absolute;
+    left: 0;
+    top: 0;    
+    z-index: 9;
+}
+.wrapper > .fire {      /* attack-button */
+    left: 230px;
+    top: 600px;
+    background-color: #FF0033;
+    box-shadow: 
+    inset 0px 1px 5px 0 rgb(255 200 200 / 60%), 
+    inset -1px -1px 3px 0 rgb(160 96 96 / 60%), 
+    1px 2px 4px 0 rgb(0 0 0 / 40%);
+    border-left: 1px solid #CC0033;
+    border-top: 1px solid #CC0033;
+    color: aliceblue;
+    font-weight: bold;
+    width: 50px;
+    height: 30px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+}
+.wrapper > .replay {     /* replay-button */
+    left: 290px;
+    top: 600px;
+    background-color: rgba(0, 200, 0, 1);
+    box-shadow: 
+    inset 0px 1px 5px 0 rgb(255 200 200 / 60%), 
+    inset -1px -1px 3px 0 rgb(160 96 96 / 60%), 
+    1px 2px 4px 0 rgb(0 0 0 / 40%);
+    border-left: 1px solid rgba(0, 200, 0, 1);
+    border-top: 1px solid rgba(0, 200, 0, 1);
+    color: aliceblue;
+    font-weight: bold;
+    width: 60px;
+    height: 30px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+}

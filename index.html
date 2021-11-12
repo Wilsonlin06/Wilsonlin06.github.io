@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    </link>
+</head>
+
+<body>
+    <h1>Algebra Formula</h1>
+    <div class="wrapper">
+        <canvas style="z-index: 2;"></canvas>
+        <input class="m-value" id="m-value" type=range min=0 max=10 value=1 >
+        <input class="b-value" id="b-value" type=range min=0 max=10 value=0 >
+        <input class="m-txt" id="m-txt" type="text">
+        <input class="b-txt" id="b-txt" type="text">
+        <img class="ally" id="ally" src="img/pika_stdr2_rmbg.gif" style="width: 110px; position:absolute; left: 0px; top: 480px; z-index: 9;">
+        <img class="skill" id="skill" src="img/fire_ball.gif" style="width: 50px; position: absolute; left: 100px; top: 460px; border-radius: 50px; z-index: 9;" hidden>
+        <img class="animate" id="animate" src="img/pika_fire_R.gif" style=" z-index: 9;" hidden>
+        <img class="enemy" id="enemy" src="img/snorlax_stdrL.gif" style="width: 120px; position: absolute; left: 500px; top: 90px; z-index: 0;">
+        <button class="fire" id="fire">Fire</button>
+        <button class="replay" id="replay">Replay</button>
+    </div>
+    
+    <script src="canvas.js"></script>
+</body>
+
+</html>
