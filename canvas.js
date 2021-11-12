@@ -7,7 +7,13 @@ const ctx = canvas.getContext('2d');				// Drawing key
 const gridMin = 100;
 const gridMax = 509;
 const cellSize = 40;
-const instruct = "Your TASK is to use\nthe algebra formula (y = mx + b)\nto control Pikachu to attack\nSnorlax."
+const instruct = "Your TASK is to use the algebra formula (y = mx + b)"+
+"\nto control Pikachu to attack Snorlax.\nYou have to check the Snorlax's"+
+" location and adjust the\nslope(m) and/or the intercept(b) in order "+
+"to knock it down.\n\nFor example, if Snorlax is at [7,10], then we set m = 1"+
+" and\nb = 2, so the equation becomes 'y = 1x + b'. Now we test\nplugging"+
+" x = 8, y = 10, we see that the equation is fulfilled.\n\nRemember, it could"+
+"be more than one possible solutions.\n\nAlright! Let's Do It!"
 const mBar = document.querySelector('#m-value');
 const bBar = document.querySelector('#b-value');
 const enemyChr = document.getElementById('enemy');
@@ -20,7 +26,8 @@ const mTxt = document.getElementById('m-txt');
 const bTxt = document.getElementById('b-txt');
 var enemyCoord = [];
 var enemyLocation = 0;
-var mValue = mBar.value, bValue = bBar.value, destX = gridMin, destY = gridMax, origX = gridMin, origY = gridMax;
+var mValue = mBar.value, bValue = bBar.value, 
+destX = gridMin, destY = gridMax, origX = gridMin, origY = gridMax;
 var timerId = null;
 var goal = false;
 
@@ -39,12 +46,16 @@ function init(){
 // Drawing text
 function drawText(){
 	// Instruction
+	ctx.save();
+	ctx.textBaseline = "middle";
+	ctx.fillStyle = 'rgba(247, 247, 171, 0.8)';
+	ctx.fillRect(620,30, 500,320);
 	ctx.fillStyle = "#0000ff";
-	ctx.font = "bold 24px serif";
+	ctx.font = "bold 20px serif";
 	var lines = instruct.split('\n');
 	var lineHeight = 25;
 	for(let i = 0; i < lines.length; i++)
-		ctx.fillText(lines[i], 550, 50 + (i * lineHeight));
+		ctx.fillText(lines[i], 620, 50 + (i * lineHeight));
 
 	// Slide bars
 	// m-slider
@@ -56,6 +67,7 @@ function drawText(){
 	ctx.fillStyle = '0099ff';
 	ctx.font = "18px serif";
 	ctx.fillText('b value:', 370, 570);
+	ctx.restore();
 }
 
 // Drawing grid
@@ -76,9 +88,10 @@ function drawGrid(){
 	ctx.lineTo(509, 509);
 	ctx.lineTo(509, 100);
 	ctx.lineTo(100, 100);
-	ctx.closePath
-	ctx.stroke()
+	ctx.closePath;
+	ctx.stroke();
 
+	ctx.save();
 	for(let i = 0; i < 10; i++){					// Drawing the body
 		for(let j = 0; j < 10; j++){	
 			ctx.fillStyle = 'rgba(111, 166, 248, 0.25)';
@@ -100,6 +113,7 @@ function drawGrid(){
 		else if(i == 9)
 			ctx.fillText(yAxis[i], 84, 469 - y);
 	}
+	ctx.restore();
 }
 // Clear grid
 function clrGrid(){
@@ -252,29 +266,22 @@ function pixelizeDestXY(mVal, bVal){
 
 // Check goal
 function checkGoal(){	
+	ctx.save();
+	ctx.textBaseline = 'top';
+	ctx.fillStyle = 'rgba(247, 247, 171, 0.8)';
+	ctx.font = '16px serif';
+	ctx.fillRect(345,345,145,26);
+	ctx.fillStyle = '#0000ff';
 	if((Number(enemyCoord[0]) * Number(mValue) + Number(bValue)) == Number(enemyCoord[1])){
 		enemyChr.setAttribute('src','img/snorlax_slp.gif');
 		let result = `Great job! You did it!`;
-		ctx.save();
-		ctx.textBaseline = 'top';
-		ctx.fillStyle = 'rgba(247, 247, 171, 0.8)';
-		var wid = ctx.measureText(result).width;
-		ctx.fillRect(350,350,wid,20);
-		ctx.fillStyle = '#0000ff';
 		ctx.fillText(result, 350, 350);
-		ctx.restore();
 		attkBtn.disabled = true;
 	}else{
 		let result = `Oh No!! Try again!`;
-		ctx.save();
-		ctx.textBaseline = 'top';
-		ctx.fillStyle = 'rgba(247, 247, 171, 0.8)';
-		var wid = ctx.measureText(result).width;
-		ctx.fillRect(350,350,wid,20);
-		ctx.fillStyle = '#0000ff';
 		ctx.fillText(result, 350, 350);
-		ctx.restore();
 	}
+	ctx.restore();
 }
 
 // Update Textbox values with sliders
@@ -285,31 +292,25 @@ function updateTxt(){
 
 // Assign enemy's coordinates
 function assignCoord(zeroToTen){
+	ctx.save();
+	ctx.fillStyle = 'rgba(247, 247, 171, 0.8)';
+	ctx.font = '16px serif'
+	ctx.textBaseline = 'top';
+	var wid = ctx.measureText(`Snorlax is at[10,10]`).width;
+	ctx.fillRect(20,30,wid,20);
+	ctx.fillStyle = '#0000ff';
 	if(zeroToTen != 0){
 		enemyLocation = zeroToTen * cellSize + zeroToTen;
 		enemyChr.style.left = `${gridMax - enemyLocation - cellSize - 1}px`; 
 		enemyChr.style.top = `-20px`; 
-		ctx.save();
-		ctx.textBaseline = 'top';
-		ctx.fillStyle = 'rgba(247, 247, 171, 0.8)';
-		var wid = ctx.measureText(`Snorlax is at[10,10]`).width;
-		ctx.fillRect(20,30,wid,20);
-		ctx.fillStyle = '#0000ff';
 		ctx.fillText(`Snorlax is at[${10-zeroToTen},10]`, 20, 30);
 		enemyCoord = [10-zeroToTen,10];
-		ctx.restore();
 	}else{
 		zeroToTen = Math.floor(Math.random() * 10 );
 		enemyLocation = zeroToTen * cellSize + zeroToTen;
 		enemyChr.style.top = `${enemyLocation}px`;
-		ctx.save();
-		ctx.textBaseline = 'top';
-		ctx.fillStyle = 'rgba(247, 247, 171, 0.8)';
-		var wid = ctx.measureText(`Snorlax is at[10,10]`).width;
-		ctx.fillRect(20,30,wid,20);
-		ctx.fillStyle = '#0000ff';
 		ctx.fillText(`Snorlax is at[10,${10-zeroToTen}]`, 20, 30);
 		enemyCoord = [10,10-zeroToTen];
-		ctx.restore();
 	}
+	ctx.restore();
 }
