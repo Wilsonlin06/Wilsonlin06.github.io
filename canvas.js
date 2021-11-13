@@ -10,7 +10,7 @@ const cellSize = 40;
 const instruct = "Your TASK is to use the algebra formula (y = mx + b)"+
 "\nto control Pikachu to attack Snorlax.\nYou have to check the Snorlax's"+
 " location and adjust the\nslope(m) and/or the intercept(b) in order "+
-"to knock it down.\n\nFor example, if Snorlax is at [7,10], then we set m = 1"+
+"to knock it down.\n\nFor example, if Snorlax is at [8,10], then we set m = 1"+
 " and\nb = 2, so the equation becomes 'y = 1x + b'. Now we test\nplugging"+
 " x = 8, y = 10, we see that the equation is fulfilled.\n\nRemember, it could"+
 "be more than one possible solutions.\n\nAlright! Let's Do It!"
