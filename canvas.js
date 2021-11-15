@@ -49,7 +49,7 @@ function drawText(){
 	ctx.save();
 	ctx.textBaseline = "middle";
 	ctx.fillStyle = 'rgba(247, 247, 171, 0.8)';
-	ctx.fillRect(620,30, 500,320);
+	ctx.fillRect(620, 30, 500, 320);
 	ctx.fillStyle = "#0000ff";
 	ctx.font = "bold 20px serif";
 	var lines = instruct.split('\n');
@@ -72,22 +72,17 @@ function drawText(){
 
 // Drawing grid
 function drawGrid(){	
-	const columnSize = 40;							// Context
-	const rowSize = 40;
 	const sections = 10;
-	const xScale = 40;
-	const yScale = 40;
 	const xAxis = [0,1,2,3,4,5,6,7,8,9,10];
 	const yAxis = [1,2,3,4,5,6,7,8,9,10];
-	const x = 100, y = 100;							// Starting x & y
-	const w = columnSize, h = rowSize;	
+	const x = gridMin, y = gridMin;							// Starting x & y
 
-	ctx.beginPath();									// Drawing the frame
-	ctx.moveTo(100, 100);
-	ctx.lineTo(100, 509);
-	ctx.lineTo(509, 509);
-	ctx.lineTo(509, 100);
-	ctx.lineTo(100, 100);
+	ctx.beginPath();								// Drawing the frame
+	ctx.moveTo(gridMin, gridMin);
+	ctx.lineTo(gridMin, gridMax);
+	ctx.lineTo(gridMax, gridMax);
+	ctx.lineTo(gridMax, gridMin);
+	ctx.lineTo(gridMin, gridMin);
 	ctx.closePath;
 	ctx.stroke();
 
@@ -95,13 +90,13 @@ function drawGrid(){
 	for(let i = 0; i < 10; i++){					// Drawing the body
 		for(let j = 0; j < 10; j++){	
 			ctx.fillStyle = 'rgba(111, 166, 248, 0.25)';
-			ctx.fillRect(x + i * columnSize + i, y + j * rowSize + j, w, h);
+			ctx.fillRect(x + i * cellSize + i, y + j * cellSize + j, cellSize, cellSize);
 		}
 	}
 
 	for (let i=0 ; i <= sections; i++) {
-		const x = i * xScale + i;
-        const y = i * yScale + i;
+		const x = i * cellSize + i;
+        const y = i * cellSize + i;
 		ctx.fillStyle = "rgba(0, 0, 0, 1)";
 		ctx.font = "8pt Verdana";
 		if( i == 0 || i == 10)
@@ -270,7 +265,7 @@ function checkGoal(){
 	ctx.textBaseline = 'top';
 	ctx.fillStyle = 'rgba(247, 247, 171, 0.8)';
 	ctx.font = '16px serif';
-	ctx.fillRect(345,345,145,26);
+	ctx.fillRect(345, 345, 145, 26);
 	ctx.fillStyle = '#0000ff';
 	if((Number(enemyCoord[0]) * Number(mValue) + Number(bValue)) == Number(enemyCoord[1])){
 		enemyChr.setAttribute('src','img/snorlax_slp.gif');
@@ -297,20 +292,20 @@ function assignCoord(zeroToTen){
 	ctx.font = '16px serif'
 	ctx.textBaseline = 'top';
 	var wid = ctx.measureText(`Snorlax is at[10,10]`).width;
-	ctx.fillRect(20,30,wid,20);
+	ctx.fillRect(20, 30, wid, 20);
 	ctx.fillStyle = '#0000ff';
 	if(zeroToTen != 0){
 		enemyLocation = zeroToTen * cellSize + zeroToTen;
 		enemyChr.style.left = `${gridMax - enemyLocation - cellSize - 1}px`; 
 		enemyChr.style.top = `-20px`; 
 		ctx.fillText(`Snorlax is at[${10-zeroToTen},10]`, 20, 30);
-		enemyCoord = [10-zeroToTen,10];
+		enemyCoord = [10-zeroToTen, 10];
 	}else{
 		zeroToTen = Math.floor(Math.random() * 10 );
 		enemyLocation = zeroToTen * cellSize + zeroToTen;
 		enemyChr.style.top = `${enemyLocation}px`;
 		ctx.fillText(`Snorlax is at[10,${10-zeroToTen}]`, 20, 30);
-		enemyCoord = [10,10-zeroToTen];
+		enemyCoord = [10, 10-zeroToTen];
 	}
 	ctx.restore();
 }
