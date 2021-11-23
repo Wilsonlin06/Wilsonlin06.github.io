@@ -33,7 +33,7 @@ var goal = false;
 
 // Initialize
 function init(){		
-	canvas.width = 1200 ;
+	canvas.width = 1200;
 	canvas.height = 700;
 	updateTxt();
 	drawGrid();
@@ -75,7 +75,7 @@ function drawGrid(){
 	const sections = 10;
 	const xAxis = [0,1,2,3,4,5,6,7,8,9,10];
 	const yAxis = [1,2,3,4,5,6,7,8,9,10];
-	const x = gridMin, y = gridMin;							// Starting x & y
+	const x = gridMin, y = gridMin;					// Starting x & y
 
 	ctx.beginPath();								// Drawing the frame
 	ctx.moveTo(gridMin, gridMin);
@@ -192,9 +192,7 @@ replayBtn.addEventListener('click',function(){
 // enemy
 function allocateEnemy(){
 	var zeroToTen = Math.floor(Math.random() * 10 );
-	console.log('random number:', zeroToTen)
 	assignCoord(zeroToTen);
-	console.log('coord:',enemyCoord);
 }
 
 function moveAlly(newY){
@@ -234,7 +232,6 @@ function attack(){
 	else if(imgLeft > destX)
 		imgLeft -= 1;
 
-	console.log(`imgLeft: ${imgLeft}, destX: ${destX}, imgTop: ${imgTop}`);
 	fireAct.style.left = `${imgLeft}px`;
 	fireAct.style.top = `${imgTop}px`;
 }
